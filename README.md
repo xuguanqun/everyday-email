@@ -12,11 +12,11 @@
  
 ## 开始
 ```
-node node.js
+node email_to_girlfriend.js
 ```
 ## 使用pm2
 ```
-pm2 node.js
+pm2 email_to_girlfriend.js
 ```
 ## 关于
 ### 项目所使用到的包
