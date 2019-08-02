@@ -3,7 +3,9 @@
 ## 主要功能
 通过爬取：天气、微博、知乎、ONE、豆瓣电影，将数据整合成HTML，定时发送邮件。
 ## 示例
-![Image text](https://github.com/xuguanqun/everyday-email/blob/master/iamges/1.jpg)
+![Image text](https://github.com/xuguanqun/everyday-email/blob/master/iamges/1.jpg =125x222)
+![Image text](https://github.com/xuguanqun/everyday-email/blob/master/iamges/2.jpg =125x222)
+![Image text](https://github.com/xuguanqun/everyday-email/blob/master/iamges/3.jpg =125x222)
 ## 开始
 ```
 node node.js
