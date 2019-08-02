@@ -74,6 +74,26 @@ function getDate(){
     let week = ['日','一','二','三','四','五','六'];
     return `${time.getFullYear()}年${time.getMonth()+1}月${time.getDate()}日 星期${week[time.getDay()]}`;
 }
+//根据天气情况显示背景图
+function getBackground(f_str_weather){
+    let background = 'https://h5tq.moji.com/tianqi/assets/images/skin/day_0.jpg';//默认 晴
+    let _obj = [
+        {weather:'晴',img:'https://h5tq.moji.com/tianqi/assets/images/skin/day_0.jpg'},
+        {weather:'阴',img:'https://h5tq.moji.com/tianqi/assets/images/skin/day_1.jpg'},
+        {weather:'雨',img:'https://h5tq.moji.com/tianqi/assets/images/skin/day_3.jpg'},
+        {weather:'雷',img:'https://h5tq.moji.com/tianqi/assets/images/skin/day_4.jpg'},
+        {weather:'雪',img:'https://h5tq.moji.com/tianqi/assets/images/skin/day_13.jpg'},
+        {weather:'雾',img:'https://h5tq.moji.com/tianqi/assets/images/skin/day_18.jpg'},
+        {weather:'沙',img:'https://h5tq.moji.com/tianqi/assets/images/skin/day_20.jpg'},
+        {weather:'霾',img:'https://h5tq.moji.com/tianqi/assets/images/skin/day_45.jpg'},
+    ]
+    _obj.map(v=>{
+        if(f_str_weather.indexOf(v.weather) !== -1){//符合
+            background = v.img;
+        }
+    });
+    return background;
+}
 function wheather(){
     Request({
         url:'https://tianqi.moji.com/weather/china/zhejiang/xihu-district',
@@ -97,6 +117,7 @@ function wheather(){
         let fengxiang = $('.wea_about>em')[0]?$('.wea_about>em')[0].children[0].data:false;
         let tips = $('.wea_tips>em')[0]?$('.wea_tips>em')[0].children[0].data:false;
         global.data.wheather ={
+            '背景':getBackground(wheather_type),
             '温度':wendu,
             '天气':wheather_type,
             '图标':wheather_img,
@@ -201,7 +222,7 @@ function renderHtml(onOk,onErr){
     try{
         //渲染天气modal
         let tq = global.data.wheather;
-        let wheather = `<div style="padding:5px;height:180px;text-align:center;color:white;border-radius:5px;background:url(https://h5tq.moji.com/tianqi/assets/images/skin/day_1.jpg)">
+        let wheather = `<div style="padding:5px;height:180px;text-align:center;color:white;border-radius:5px;background:url(${tq['背景']})">
         <div style="width:50%;height:85%;float:left;text-align:left;display:flex;flex-direction:column;justify-content: space-around;">
         ${ tq['预警'] ? `<span>天气预警 &ensp;${tq['预警'].alt}</span>` : '' }
         ${ tq['空气'] ? `<span>空气质量 &ensp;${tq['空气'].alt}</span>` : '' }
