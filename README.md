@@ -5,9 +5,9 @@
 ## 示例
 
 <div>
-<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/1.jpg" width="187.5px" height="333.5px" />
-<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/2.jpg" width="187.5px" height="333.5px" />
-<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/3.jpg" width="187.5px" height="333.5px" />
+<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/1.jpg" width="150px" height="189.2px" />&ensp;
+<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/2.jpg" width="150px" height="220px" />&ensp;
+<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/3.jpg" width="150px" height="220px" />
 </div>
  
 ## 开始
