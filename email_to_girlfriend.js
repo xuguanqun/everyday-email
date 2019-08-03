@@ -222,7 +222,7 @@ function renderHtml(onOk,onErr){
     try{
         //渲染天气modal
         let tq = global.data.wheather;
-        let wheather = `<div style="padding:5px;height:180px;text-align:center;color:white;border-radius:5px;background:url(${tq['背景']})">
+        let wheather = `<div style="padding:5px;height:180px;text-align:center;color:white;border-radius:5px;background:url(${tq['背景']});background-size:100% 100%;">
         <div style="width:50%;height:85%;float:left;text-align:left;display:flex;flex-direction:column;justify-content: space-around;">
         ${ tq['预警'] ? `<span>天气预警 &ensp;${tq['预警'].alt}</span>` : '' }
         ${ tq['空气'] ? `<span>空气质量 &ensp;${tq['空气'].alt}</span>` : '' }
