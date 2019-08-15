@@ -18,6 +18,7 @@ npm install
 ```
 node email_to_girlfriend.js
 ```
+代码默认为服务器部署时定时执行，如要在本地立即测试，请注释schedule定时函数（注释第24行和第53行）
 ## 使用pm2
 ```
 pm2 email_to_girlfriend.js
