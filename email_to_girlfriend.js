@@ -244,7 +244,12 @@ function renderHtml(onOk,onErr){
         //豆瓣电影
         let movie = '';
         if(global.data.doubanMovie.length>0){
-            global.data.doubanMovie.map(v2=>movie+=`<div style="height:60px;padding:5px;display:flex;justify-content:start;"><img style="height:100%;border-radius:5px;" src="${v2.img_src}" />&ensp;<a style="color:black;text-decoration:none"href="${v2.title_link}">${v2.title}</a></div>`);
+            global.data.doubanMovie.map(v2=>movie+=`<div style="height:60px;padding:5px;display:flex;justify-content:start;">
+            <img style="height:100%;border-radius:5px;" src="${v2.img_src}" />&ensp;
+            <a style="color:black;text-decoration:none"href="${v2.title_link}">
+            ${v2.title} <span style="color:${v2.star<4?'#d81e06':'#e09015'}">${v2.star}</span>
+            </a>
+            </div>`);
         }
         //知乎日报
         let zhihu = '';
