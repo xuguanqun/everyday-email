@@ -258,7 +258,7 @@ function renderHtml(onOk,onErr){
         }
         //HTML
         var html=`<p>${global.data.remenber.date}<span style="float:right">❤️ ${global.data.remenber.love} 天</span></p>
-        ${global.data.remenber.birthday<=7?`<h2>距离你的生日还有 ${global.data.remenber.birthday} 天</h2>`:''}
+        ${global.data.remenber.birthday<=7&&global.data.remenber.birthday>0?`<h2>距离你的生日还有 ${global.data.remenber.birthday} 天</h2>`:''}
         <br />
         ${wheather}
         <br />
