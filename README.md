@@ -1,5 +1,3 @@
-# 发现star多了几个，老代码在页面爬取上有些问题，抽空会更新代码。
-
 # everyday-email
 给你的女朋友每天发一封爱的邮件
 ## 主要功能
@@ -7,10 +5,10 @@
 ## 示例
 
 <div>
-<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/48CE1175-B92F-4592-9A7E-605C94645C76.PNG" width="150px" height="189.2px" />&emsp;
-<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/93CF4831-F678-46B3-B808-9977EFD922C9.PNG" width="150px" height="220px" />&emsp;
-<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/C8E6C45E-5482-425C-8121-971013DF58E7.PNG" width="150px" height="220px" />&emsp;
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/F92C88D0-5B4F-4893-8239-B3FEC9C1D37A.PNG" width="150px" height="220px" />
+<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/48CE1175-B92F-4592-9A7E-605C94645C76.png" width="150px" height="189.2px" />&emsp;
+<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/93CF4831-F678-46B3-B808-9977EFD922C9.png" width="150px" height="220px" />&emsp;
+<img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/C8E6C45E-5482-425C-8121-971013DF58E7.png" width="150px" height="220px" />&emsp;
+ <img src="https://github.com/xuguanqun/everyday-email/blob/master/iamges/F92C88D0-5B4F-4893-8239-B3FEC9C1D37A.png" width="150px" height="220px" />
 </div>
  
 ## 开始
@@ -42,7 +40,7 @@ const Email = {
 
 默认只支持配置qq邮箱，如需配置其他邮箱，参考[nodemailer](https://github.com/nodemailer/nodemailer "nodemailer")文档，自行修改 `sendEmail` 函数（416行）
 ### 2.日期计数（可选）
-```
+```js
 passDay:[
         {name:'恋爱❤️',date:'xxxx-mm-dd',color:'#ff4d4f'},
     ]
