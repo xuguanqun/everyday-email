@@ -84,7 +84,7 @@ function doPassDay(){
         let day = ((nowTime - startTime)/oneday)/1000;
         span += `<span>${v.name} <b style="color:${v.color}">${parseInt(day)}</b> 天</span>`;
     })
-    global.data.passDay_HTML = `<div style="display:flex;justify-content:space-around;">${span}</div>`;
+    global.data.passDay_HTML = span ? `<div style="display:flex;justify-content:space-around;">${span}</div>` : '';
 }
 function doRemenber(){
     if(global.data.remenber.length===0){
@@ -110,7 +110,7 @@ function doRemenber(){
             }
         }
     })
-    global.data.remenber_HTML = `<div style="display:flex;flex-direction:column;">${div}</div>`;
+    global.data.remenber_HTML = div ? `<div style="display:flex;flex-direction:column;">${div}</div>` : '';
 }
 
 //根据天气情况显示背景图
