@@ -1,5 +1,4 @@
 # everyday-email
-给你的女朋友每天发一封爱的邮件
 ## 主要功能
 通过爬取：天气、微博、知乎、ONE、豆瓣电影，将数据整合成邮件，定时发送。
 ## 示例
@@ -42,7 +41,7 @@ const Email = {
 ### 2.日期计数（可选）
 ```js
 passDay:[
-        {name:'恋爱❤️',date:'xxxx-mm-dd',color:'#ff4d4f'},
+        {name:'❤️',date:'xxxx-mm-dd',color:'#ff4d4f'},
     ]
 ```
 可填入多个日期计数  
