@@ -4,9 +4,9 @@
 ## 示例
 
 <div>
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/1.png?raw=true" width="150px" height="300px" />&emsp;
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/2.png?raw=true" width="150px" height="300px" />&emsp;
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/3.png?raw=true" width="150px" height="300px" />&emsp;
+ <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/1.png?raw=true" width="187px" height="406px" />&emsp;
+ <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/2.png?raw=true" width="187px" height="406px" />&emsp;
+ <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/3.png?raw=true" width="187px" height="406px" />&emsp;
 </div>
  
 ## 开始
