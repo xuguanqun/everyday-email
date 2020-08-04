@@ -1,4 +1,3 @@
-const Request = require("request");
 const cheerio = require("cheerio");
 const iconv = require("iconv-lite");
 const request = require("../utils/request");
@@ -10,7 +9,7 @@ const doubanMovie = async () => {
       url: url,
       msg: "豆瓣电影-请求错误",
       date: new Date(),
-    }).catch((err) => console.error(err));
+    });
   }
   const html = iconv.decode(douban, "utf8");
   const $ = cheerio.load(html);

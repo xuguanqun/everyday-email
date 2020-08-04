@@ -1,4 +1,3 @@
-const Request = require("request");
 const cheerio = require("cheerio");
 const iconv = require("iconv-lite");
 const request = require("../utils/request");
@@ -10,7 +9,7 @@ const zhihuDaily = async () => {
       url: url,
       msg: "知乎日报-请求错误",
       date: new Date(),
-    }).catch((err) => console.error(err));
+    });
   }
   const html = iconv.decode(zhihu, "utf8");
   const $ = cheerio.load(html);

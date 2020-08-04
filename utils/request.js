@@ -17,7 +17,7 @@ const request = (url) => {
         }
       );
   }).catch(err=>{
-    debugger
+    //
   })
 };
 module.exports = request;
