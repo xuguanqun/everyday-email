@@ -4,9 +4,9 @@ const sendEmail = async ({ sendOption }) => {
   const transporter = nodemailer.createTransport({ mailOption });
   transporter.sendMail(sendOption, (error, info) => {
     if (error) {
-      return Promise.reject({ msg: error, date: new Date() });
+      return Promise.reject({ ret: false, msg: error, date: new Date() });
     } else {
-      console.log("发送成功", info);
+      return Promise.resolve({ ret: true, msg: info, date: new Date() });
     }
   });
 };

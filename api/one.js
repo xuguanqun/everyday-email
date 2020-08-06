@@ -7,16 +7,25 @@ const One = async () => {
   if (!one) {
     return Promise.reject({
       url: url,
-      msg: "one-请求错误",
+      title: "one-请求错误",
       date: new Date(),
     });
   }
-  const html = iconv.decode(one, "utf8");
-  const $ = cheerio.load(html);
-  let img_src = $(".fp-one-imagen")[0].attribs.src;
-  let title = $(".fp-one-cita>a")[0].children[0].data;
-  const data = { img_src, title };
-  return Promise.resolve(data);
+  try {
+    const html = iconv.decode(one, "utf8");
+    const $ = cheerio.load(html);
+    let img_src = $(".fp-one-imagen")[0].attribs.src;
+    let title = $(".fp-one-cita>a")[0].children[0].data;
+    const data = { img_src, title };
+    return Promise.resolve(data);
+  } catch (err) {
+    return Promise.reject({
+      url: url,
+      title: "one-解析错误",
+      msg: err,
+      date: new Date(),
+    });
+  }
 };
 
 module.exports = One;
