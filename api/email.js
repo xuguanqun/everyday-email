@@ -1,14 +1,16 @@
 const nodemailer = require("nodemailer");
-const { mailOption } = require("../config");
-const sendEmail = async ({ sendOption }) => {
-  const transporter = nodemailer.createTransport({ mailOption });
-  transporter.sendMail(sendOption, (error, info) => {
-    if (error) {
-      return Promise.reject({ ret: false, msg: error, date: new Date() });
-    } else {
-      return Promise.resolve({ ret: true, msg: info, date: new Date() });
-    }
+const { mailOption } = require("../config/config.json");
+
+const email = (sendOption) => {
+  return new Promise((resolve, reject) => {
+    const transporter = nodemailer.createTransport(mailOption);
+    transporter.sendMail(sendOption, (error, info) => {
+      if (error) {
+        reject({ ret: false, msg: error, date: new Date() });
+      } else {
+        resolve({ ret: true, msg: info, date: new Date() });
+      }
+    });
   });
 };
-
-module.exports = sendEmail;
+module.exports = email;

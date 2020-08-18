@@ -5,28 +5,20 @@ const {
   mojiWeather,
   one,
   email,
-} = require("./api/index");
-const { myEmail, errorEmail } = require("./config");
+} = require("./api");
+const { card_zhihu } = require("./card");
+const sendErrorEmail = require("./utils/sendErrorEmail");
+const {
+  mailOption: { auth },
+  sendEmail,
+  errorEmail,
+} = require("./config/config.json");
 (async function () {
-  const test = await zhihuDaily().catch((err) => console.error("err", err));
-  const test2 = await weiboTop().catch((err) => console.error("err", err));
-  const test3 = await doubanMovie().catch((err) => {
-    sendErrorEmail(err);
-  });
-  const test4 = await mojiWeather().catch((err) => {
-    debugger;
-  });
-  const test5 = await one();
+  const zhihu = await zhihuDaily().catch((err) => sendErrorEmail(err));
+  const html_zhihu = card_zhihu(zhihu);
+  
+  const weibo = await weiboTop().catch((err) => sendErrorEmail(err));
+  const douban = await doubanMovie().catch((err) => sendErrorEmail(err));
+  const moji = await mojiWeather().catch((err) => sendErrorEmail(err));
+  const One = await one().catch((err) => sendErrorEmail(err));
 })();
-
-const sendErrorEmail = async ({title,msg}) => {
-  const send = await email({
-    from: myEmail.address,
-    to: errorEmail.address,
-    subject: title,
-    html: `<div>
-    <div>${msg && JSON.stringify(msg)}</div>
-    </div>`,
-  });
-  debugger;
-};
