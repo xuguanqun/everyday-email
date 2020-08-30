@@ -3,7 +3,7 @@ const iconv = require("iconv-lite");
 const request = require("../utils/request");
 
 const mojiWeather = async () => {
-  const url = "https://s.moji.com/top/summary";
+  const url = "https://m.moji.com";
   const moji = await request(url);
   if (!moji) {
     return Promise.reject({
@@ -14,42 +14,8 @@ const mojiWeather = async () => {
   }
   try {
     const html = iconv.decode(moji, "utf8");
+    debugger;
     const $ = cheerio.load(html);
-    let kongqi = $(".wea_alert>ul>li>a>span>img")[0]
-      ? $(".wea_alert>ul>li>a>span>img")[0].attribs
-      : false;
-    let warning = $(".warning_aqi>a>span>img")[0]
-      ? $(".warning_aqi>a>span>img")[0].attribs
-      : false;
-    let wendu = $(".wea_weather>em")[0]
-      ? $(".wea_weather>em")[0].children[0].data
-      : false;
-    let wheather_type = $(".wea_weather>span>img")[0]
-      ? $(".wea_weather>span>img")[0].attribs.alt
-      : false;
-    let wheather_img = $(".wea_weather>span>img")[0]
-      ? $(".wea_weather>span>img")[0].attribs.src
-      : false;
-    let shidu = $(".wea_about>span")[0]
-      ? $(".wea_about>span")[0].children[0].data
-      : false;
-    let fengxiang = $(".wea_about>em")[0]
-      ? $(".wea_about>em")[0].children[0].data
-      : false;
-    let tips = $(".wea_tips>em")[0]
-      ? $(".wea_tips>em")[0].children[0].data
-      : false;
-    const data = {
-      背景: getBackground(wheather_type),
-      温度: wendu,
-      天气: wheather_type,
-      图标: wheather_img,
-      空气: kongqi,
-      预警: warning,
-      湿度: shidu && shidu.replace(/湿度/g, ""),
-      风向: fengxiang,
-      提示: tips,
-    };
     return Promise.resolve(data);
   } catch (err) {
     return Promise.reject({
