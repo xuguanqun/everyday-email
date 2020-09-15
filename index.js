@@ -17,7 +17,6 @@ const API = require("./utils/api");
         }
       });
       console.log(successData, errorData);
-      debugger;
       const fdata = formatData(successData);
       const html = renderHtml(fdata);
       sendDataEmail(html).then((e) => console.log(e));

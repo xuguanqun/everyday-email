@@ -14,7 +14,6 @@ const mojiWeather = async () => {
   }
   try {
     const html = iconv.decode(moji, "utf8");
-    debugger;
     const $ = cheerio.load(html);
     return Promise.resolve(data);
   } catch (err) {
