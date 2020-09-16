@@ -19,7 +19,7 @@ const mojiWeather = async () => {
   } catch (err) {
     return Promise.reject({
       url: url,
-      title: "豆瓣电影-解析错误",
+      title: "墨迹天气-解析错误",
       msg: err,
       date: new Date(),
     });

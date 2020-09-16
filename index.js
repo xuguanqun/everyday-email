@@ -1,8 +1,8 @@
-const { dataCard } = require("./config/config.json");
-const sendDataEmail = require("./utils/sendDataEmail");
-const sendErrorEmail = require("./utils/sendErrorEmail");
-const renderHtml = require("./utils/renderHtml");
-const API = require("./utils/api");
+const { dataCard } = require('./config/config.json');
+const sendDataEmail = require('./utils/sendDataEmail');
+const sendErrorEmail = require('./utils/sendErrorEmail');
+const renderHtml = require('./utils/renderHtml');
+const API = require('./utils/api');
 (async function () {
   const missionList = dataCard.map((key) => API[key].func());
   const mission = Promise.allSettled(missionList)
@@ -10,13 +10,14 @@ const API = require("./utils/api");
       const successData = [];
       const errorData = [];
       data.forEach((e, i) => {
-        if (e.status === "fulfilled") {
+        if (e.status === 'fulfilled') {
           successData[i] = { title: dataCard[i], data: e.value };
-        } else if (e.status === "rejected") {
+        } else if (e.status === 'rejected') {
           errorData[i] = { title: dataCard[i], reason: e.reason };
         }
       });
       console.log(successData, errorData);
+      debugger;
       const fdata = formatData(successData);
       const html = renderHtml(fdata);
       sendDataEmail(html).then((e) => console.log(e));
