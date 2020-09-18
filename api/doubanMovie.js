@@ -33,12 +33,18 @@ const doubanMovie = async () => {
     // 影片新闻
     const itemA = $('.ui-slide-item>.gallery-frame>a');
     const itemB = $('.ui-slide-item>.gallery-frame>a>img');
+    const itemBB = $(
+      '.ui-slide-item>.gallery-frame>.gallery-detail>.gallery-bd>p'
+    );
     const num2 = Math.min(...[itemA.length, itemB.length]);
     for (let i = 0; i < num2; i++) {
+      let _content = itemBB[i].children[0].data;
+      _content = _content.replace(/\s|\n/g, '');
       hotNews[i] = {
         title: itemB[i].attribs.alt,
         img_src: itemB[i].attribs.src,
-        link: itemA[i].attribs.href
+        link: itemA[i].attribs.href,
+        content: _content
       };
     }
     const itemC = $('#reviews > .reviews-bd > .review > .review-hd > a');
@@ -57,14 +63,16 @@ const doubanMovie = async () => {
       var Atags = itemF[i].children.filter(
         (fil) => fil.type === 'tag' && fil.name === 'a'
       );
+      let _content = itemG[i].children[0].data;
+      _content = _content.replace(/\n|\s/g, '');
       hotcomment[i] = {
-        img_src: itemD[i].attribs.src,
+        img_src: itemD[i].attribs['data-original'],
         img_link: itemC[i].attribs.href,
         title: itemE[i].children[0].data,
         title_link: itemE[i].attribs.href,
         user: Atags.length > 0 ? Atags[0].children[0].data : '',
         movieName: Atags.length > 1 ? Atags[1].children[0].data : '',
-        content: itemG[i].children[0].data
+        content: _content
       };
     }
     return Promise.resolve({ isScreen, hotNews, hotcomment });
