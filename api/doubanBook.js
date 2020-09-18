@@ -16,7 +16,7 @@ const doubanBook = async () => {
     const $ = cheerio.load(html);
     const newBooks = []; // 新书
     const hotNews = []; // 热门新闻
-    const bookTop = []; // 排行
+    let bookTop = []; // 排行
     // 新书
     const itemA = $('.carousel > .slide-list > ul > li > .cover > a');
     const itemB = $('.carousel > .slide-list > ul > li > .cover > a > img');
@@ -87,6 +87,7 @@ const doubanBook = async () => {
         score: _score
       };
     }
+    bookTop = bookTop.sort((a,b)=> Number(b.score) - Number(a.score));
     return Promise.resolve({ newBooks, hotNews, bookTop });
   } catch (err) {
     return Promise.reject({

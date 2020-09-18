@@ -8,9 +8,6 @@ const commCss = `/* 公共样式 */
   font-size: 13px;
 }`;
 const tabCss = `/* tab栏样式 */
-.tab{
-  overflow-y: auto;
-}
 .tab .tab-item {
   list-style: none;
   position: relative;
@@ -53,6 +50,8 @@ const tabCss = `/* tab栏样式 */
   box-sizing: border-box;
   border-top: 1px solid #eee;
   transition: all .3s;
+  height: 268px;
+  overflow-y: auto;
 }
 .tab .tab-item input:checked ~ .content {
   opacity: 1;
