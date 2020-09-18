@@ -1,8 +1,7 @@
 const renderTabs = require('../utils/renderTabs');
+const renderCard = require('../utils/renderCard');
 const card_doubanBook = (data) => {
   const { newBooks, hotNews, bookTop } = data;
-  const title = '豆瓣读书';
-  const color = '#00B51D';
   let d_content1 = '';
   let d_content2 = '';
   let d_content3 = '';
@@ -50,9 +49,6 @@ const card_doubanBook = (data) => {
     最受关注: content3
   };
   const doubanBook = renderTabs('bookTab', obj, 300);
-  return `<div class="card">
-  <div class="title" style="border-color:${color}">${title}</div>
-  ${doubanBook}
-  </div>`;
+  return renderCard('豆瓣读书', '#00B51D', doubanBook);
 };
 module.exports = card_doubanBook;

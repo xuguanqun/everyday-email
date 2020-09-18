@@ -1,8 +1,7 @@
 const renderTabs = require('../utils/renderTabs');
+const renderCard = require('../utils/renderCard');
 const card_doubanMovie = (data) => {
   const { isScreen, hotNews, hotcomment } = data;
-  const title = '豆瓣电影';
-  const color = '#00B51D';
   let d_content1 = '';
   let d_content2 = '';
   let d_content3 = '';
@@ -49,9 +48,6 @@ const card_doubanMovie = (data) => {
     热门影评: content3
   };
   const doubanMovie = renderTabs('movieTab', obj, 300);
-  return `<div class="card">
-  <div class="title" style="border-color:${color}">${title}</div>
-  ${doubanMovie}
-  </div>`;
+  return renderCard('豆瓣电影', '#00B51D', doubanMovie);
 };
 module.exports = card_doubanMovie;

@@ -1,6 +1,5 @@
+const renderCard = require('../utils/renderCard');
 const card_weibo = (data) => {
-  const title = '微博热搜';
-  const color = '#eb7350';
   let weibo = '';
   data.map(
     (v, index) =>
@@ -13,17 +12,14 @@ const card_weibo = (data) => {
                   : index === 2
                   ? '#FFC107'
                   : '#BDBDBD'
-              };width: 24px;height: 24px;text-align: center;line-height:23px;border-radius: 50%;">${
+              };width: 20px;height: 20px;text-align: center;line-height:21px;border-radius: 50%;">${
         index + 1
       }</b>&ensp;
-              <a style="color:#262626;text-decoration:none;font-size:16px;width:90%" href="${
+              <a style="color:#262626;text-decoration:none;font-size:14px;width:90%" href="${
                 v.title_link
               }">${v.title}</a>
           </div>`)
   );
-  return `<div class="card">
-    <div class="title" style="border-color:${color}">${title}</div>
-    ${weibo}
-    </div>`;
+  return renderCard('微博热搜', '#eb7350', weibo, 'weiboCard');
 };
 module.exports = card_weibo;

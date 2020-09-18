@@ -1,12 +1,5 @@
 const commCss = `/* 公共样式 */
-.title{
-  margin-bottom: 10px;
-  padding-left: 5px;
-  border-left: 8px solid;
-  border-color: #eee;
-  color: #757575;
-  font-size: 13px;
-}`;
+`;
 const tabCss = `/* tab栏样式 */
 .tab .tab-item {
   list-style: none;
@@ -68,6 +61,45 @@ const cardCss = `/* 卡片样式 */
   color: #111;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
   transition: all .3s;
+  position: relative;
+}
+.card-title{
+  margin-bottom: 10px;
+  padding-left: 5px;
+  border-left: 8px solid;
+  border-color: #eee;
+  color: #757575;
+  font-size: 13px;
+}
+.card input {
+  display: none;
+}
+.card-content {
+  height: 150px;
+  overflow: hidden;
+  transition: all .3s;
+}
+.label-hide {
+  display: none;
+}
+.label-show,.label-hide {
+  color: #212121;
+  font-size: 13px;
+  position: absolute;
+  right: 5px;
+  top: 3px;
+}
+.show:checked ~ .card-content {
+  height: 100%;
+}
+.hide:checked ~ .card-content {
+  height: 150px;
+}
+.show:checked ~ .label-show {
+  display: none;
+}
+.show:checked ~ .label-hide {
+  display: inline;
 }`;
 const renderHtml = (data) => {
   let div = '';
