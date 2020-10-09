@@ -1,7 +1,6 @@
 const renderTabs = require('../utils/renderTabs');
 const renderCard = require('../utils/renderCard');
-const card_doubanMovie = (data) => {
-  const { isScreen, hotNews, hotcomment } = data;
+const card_doubanMovie = ({ isScreen, hotNews, hotcomment }) => {
   let d_content1 = '';
   let d_content2 = '';
   let d_content3 = '';

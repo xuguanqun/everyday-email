@@ -21,7 +21,7 @@ const FS = require('fs');
       const fdata = formatData(successData);
       const html = renderHtml(fdata);
       // console.log(html);
-      FS.writeFile('./html.txt', html, function (err) {
+      FS.writeFile('./yanshi.html', html, function (err) {
         console.log(err);
       });
       // sendDataEmail(html)

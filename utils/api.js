@@ -3,7 +3,7 @@ const {
   weiboTop,
   doubanMovie,
   doubanBook,
-  mojiWeather,
+  weather,
   one,
   email
 } = require('../api');
@@ -12,10 +12,11 @@ const {
   card_weibo,
   card_doubanMovie,
   card_one,
-  card_doubanBook
+  card_doubanBook,
+  card_weather
 } = require('../card');
 const API = {
-  墨迹天气: { func: mojiWeather },
+  天气: { func: weather, format: card_weather },
   知乎日报: { func: zhihuDaily, format: card_zhihu },
   微博热搜: { func: weiboTop, format: card_weibo },
   豆瓣电影: { func: doubanMovie, format: card_doubanMovie },

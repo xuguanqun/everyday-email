@@ -1,7 +1,6 @@
 const renderTabs = require('../utils/renderTabs');
 const renderCard = require('../utils/renderCard');
-const card_doubanBook = (data) => {
-  const { newBooks, hotNews, bookTop } = data;
+const card_doubanBook = ({ newBooks, hotNews, bookTop }) => {
   let d_content1 = '';
   let d_content2 = '';
   let d_content3 = '';

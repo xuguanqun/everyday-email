@@ -2,7 +2,7 @@ const zhihuDaily = require('./zhihu');
 const weiboTop = require('./weiboTop');
 const doubanMovie = require('./doubanMovie');
 const doubanBook = require('./doubanBook');
-const mojiWeather = require('./moji');
+const weather = require('./weather');
 const one = require('./one');
 const email = require('./email');
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
   weiboTop,
   doubanMovie,
   doubanBook,
-  mojiWeather,
+  weather,
   one,
   email
 };
