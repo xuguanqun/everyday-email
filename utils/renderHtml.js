@@ -77,7 +77,7 @@ const cardCss = `/* 卡片样式 */
 .card-content {
   height: 150px;
   overflow: hidden;
-  transition: all .3s;
+  transition: height .3s;
 }
 .label-hide {
   display: none;

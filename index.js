@@ -3,6 +3,7 @@ const sendDataEmail = require('./utils/sendDataEmail');
 const sendErrorEmail = require('./utils/sendErrorEmail');
 const renderHtml = require('./utils/renderHtml');
 const API = require('./utils/api');
+const FS = require('fs');
 (async function () {
   const missionList = dataCard.map((key) => API[key].func());
   const mission = Promise.allSettled(missionList)
@@ -17,10 +18,15 @@ const API = require('./utils/api');
         }
       });
       console.log(successData, errorData);
-      debugger;
       const fdata = formatData(successData);
       const html = renderHtml(fdata);
-      sendDataEmail(html).then((e) => console.log(e));
+      // console.log(html);
+      FS.writeFile('./html.txt', html, function (err) {
+        console.log(err);
+      });
+      // sendDataEmail(html)
+      //   .then((e) => console.log(e))
+      // .catch((err) => console.error(err));
       // sendErrorEmail(errorData);
     })
     .catch((err) => {

@@ -7,7 +7,7 @@ const card_doubanBook = (data) => {
   let d_content3 = '';
   newBooks.map(
     (v, index) =>
-      (d_content1 += `<a href="${v.link}" style="display:block;text-align:center;width:19%;text-decoration: none;">
+      (d_content1 += `<a href="${v.link}" style="display:block;text-align:center;width:70px;text-decoration: none;float:left;margin:0px 5px;">
           <div style="height:100px;position: relative;">
             <img src="${v.img_src}" width="100%" style="position: absolute;bottom: 0;left: 0;" />
           </div>
@@ -16,7 +16,7 @@ const card_doubanBook = (data) => {
   );
   hotNews.map(
     (v, index) =>
-      (d_content2 += `<a href="${v.link}" style="display:block;text-decoration: none;height:100px;margin:5px 0px;overflow: hidden;">
+      (d_content2 += `<a href="${v.link}" style="display:inline-block;text-decoration: none;height:100px;width:340px;margin:5px 0px;overflow: hidden;">
           <span style="float:left;width:45%;height:100%;">
               <img src="${v.img_src}" height="100%" width="100%" style="border-radius:5px;object-fit: contain;" />
           </span>
@@ -28,7 +28,7 @@ const card_doubanBook = (data) => {
   );
   bookTop.map(
     (v, index) =>
-      (d_content3 += `<a href="${v.link}" style="display:block;text-decoration: none;height:110px;margin:5px 0px;overflow: hidden;">
+      (d_content3 += `<a href="${v.link}" style="display:inline-block;text-decoration: none;height:110px;width:340px;margin:5px 0px;overflow: hidden;">
             <span style="float:left;width:24%;height:100%;">
                 <img src="${v.img_src}" width="100%" style="border-radius:5px" />
             </span>
@@ -40,15 +40,21 @@ const card_doubanBook = (data) => {
             </span>
           </a>`)
   );
-  const content1 = `<div style="display: flex;justify-content: space-around;flex-wrap: wrap;">${d_content1}</div>`;
-  const content2 = `<div style="margin:5px 0px;padding:5px">${d_content2}</div>`;
-  const content3 = `<div style="margin:5px 0px;padding:5px">${d_content3}</div>`;
+  const content1 = `<div style="overflow-x: auto;width: ${
+    80 * newBooks.length
+  }px;height: 100%;">${d_content1}</div>`;
+  const content2 = `<div style="margin-top:10px;padding:5px;overflow-x: auto;height: 130px;width: ${
+    340 * hotNews.length
+  }px;">${d_content2}</div>`;
+  const content3 = `<div style="margin-top:10px;padding:5px;overflow-x: auto;height: 130px;width: ${
+    340 * bookTop.length
+  }px;">${d_content3}</div>`;
   const obj = {
     新书速递: content1,
     图书资讯: content2,
     最受关注: content3
   };
-  const doubanBook = renderTabs('bookTab', obj, 300);
+  const doubanBook = renderTabs('bookTab', obj, 200);
   return renderCard('豆瓣读书', '#00B51D', doubanBook);
 };
 module.exports = card_doubanBook;
