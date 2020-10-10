@@ -1,5 +1,6 @@
 const renderTabs = require('../utils/renderTabs');
 const renderCard = require('../utils/renderCard');
+const { doubanIcon } = require('../utils/icon');
 const card_doubanMovie = ({ isScreen, hotNews, hotcomment }) => {
   let d_content1 = '';
   let d_content2 = '';
@@ -53,6 +54,6 @@ const card_doubanMovie = ({ isScreen, hotNews, hotcomment }) => {
     热门影评: content3
   };
   const doubanMovie = renderTabs('movieTab', obj, 180);
-  return renderCard('豆瓣电影', '#00B51D', doubanMovie);
+  return renderCard('豆瓣电影', '#00B51D', doubanMovie, '', doubanIcon);
 };
 module.exports = card_doubanMovie;

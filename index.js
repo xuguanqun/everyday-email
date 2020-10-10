@@ -20,12 +20,10 @@ const FS = require('fs');
       console.log(successData, errorData);
       const fdata = formatData(successData);
       const html = renderHtml(fdata);
-      // console.log(html);
       FS.writeFile('./yanshi.html', html, function (err) {
         console.log(err);
       });
-      // sendDataEmail(html)
-      //   .then((e) => console.log(e))
+      // sendDataEmail(html).then((e) => console.log(e));
       // .catch((err) => console.error(err));
       // sendErrorEmail(errorData);
     })

@@ -72,12 +72,15 @@ const weather = async () => {
     const wet = $('.wea_about > span')[0].children[0].data;
     const wind = $('.wea_about > em')[0].children[0].data;
     const tips = $('.wea_tips em')[0].children[0].data;
+    const high_low = $('.forecast > ul > li')[2].children[0].data;
     // const canvas = $('.canvas > .canvas_box').html();
+    const _address = address.replace(/\s/g, '');
     const data = {
-      address,
+      address: _address.split('，').reverse(),
       airLabel: air.alt,
       airImg: air.src,
       temperature,
+      high_low,
       temperatureImg: temperatureImg.src,
       temperatureTxt: temperatureImg.alt,
       updateTime,

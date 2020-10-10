@@ -1,4 +1,5 @@
 const renderCard = require('../utils/renderCard');
+const { zhihuIcon } = require('../utils/icon');
 const card_zhihu = (data) => {
   let zhihu = '';
   data.map(
@@ -12,6 +13,6 @@ const card_zhihu = (data) => {
             }">${v.title}</a>
         </div>`)
   );
-  return renderCard('知乎日报', '#0084ff', zhihu, 'zhihuCard');
+  return renderCard('知乎日报', '#0084ff', zhihu, 'zhihuCard', zhihuIcon);
 };
 module.exports = card_zhihu;

@@ -1,5 +1,6 @@
 const renderTabs = require('../utils/renderTabs');
 const renderCard = require('../utils/renderCard');
+const { doubanIcon } = require('../utils/icon');
 const card_doubanBook = ({ newBooks, hotNews, bookTop }) => {
   let d_content1 = '';
   let d_content2 = '';
@@ -54,6 +55,6 @@ const card_doubanBook = ({ newBooks, hotNews, bookTop }) => {
     最受关注: content3
   };
   const doubanBook = renderTabs('bookTab', obj, 200);
-  return renderCard('豆瓣读书', '#00B51D', doubanBook);
+  return renderCard('豆瓣读书', '#00B51D', doubanBook, '', doubanIcon);
 };
 module.exports = card_doubanBook;

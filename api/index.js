@@ -5,6 +5,7 @@ const doubanBook = require('./doubanBook');
 const weather = require('./weather');
 const one = require('./one');
 const email = require('./email');
+const commemorationDay = require('./commemoration-day');
 module.exports = {
   zhihuDaily,
   weiboTop,
@@ -12,5 +13,6 @@ module.exports = {
   doubanBook,
   weather,
   one,
-  email
+  email,
+  commemorationDay
 };

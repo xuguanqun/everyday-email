@@ -1,4 +1,6 @@
 const renderCard = require('../utils/renderCard');
+const { weiboIcon } = require('../utils/icon');
+const weiboTop = require('../api/weiboTop');
 const card_weibo = (data) => {
   let weibo = '';
   data.map(
@@ -20,6 +22,6 @@ const card_weibo = (data) => {
               }">${v.title}</a>
           </div>`)
   );
-  return renderCard('微博热搜', '#eb7350', weibo, 'weiboCard');
+  return renderCard('微博热搜', '#eb7350', weibo, 'weiboCard', weiboIcon);
 };
 module.exports = card_weibo;

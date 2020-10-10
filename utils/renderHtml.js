@@ -1,4 +1,33 @@
 const commCss = `/* 公共样式 */
+.tag-black{
+  color:#fff;
+  background:#000;
+  border-radius:5px;
+  margin:0px 3px;
+  padding:0px 5px;
+}
+.tag-opacity{
+  color:#fff;
+  background:rgba(255,255,255,.2);
+  border-radius:5px;
+  margin:0px 5px;
+  padding:0px 5px;
+}
+.temperature::before {
+  position: absolute;
+  top: 0px;
+  right: -15px;
+  font-size: 35px;
+  content: '°';
+}
+.today{
+  font-size:15px;
+  font-weight:400;
+  width:73px;
+  background: linear-gradient(to right, #722ed1, #1890ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
 `;
 const tabCss = `/* tab栏样式 */
 .tab .tab-item {
@@ -70,6 +99,8 @@ const cardCss = `/* 卡片样式 */
   border-color: #eee;
   color: #757575;
   font-size: 13px;
+  display:flex;
+  align-items:center;
 }
 .card input {
   display: none;

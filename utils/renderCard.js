@@ -1,4 +1,4 @@
-const renderCard = (title, color, data, cardKey) => {
+const renderCard = (title, color, data, cardKey, icon) => {
   const showOhide = cardKey
     ? `<input id="${cardKey}-show" class="show" type="radio" name="${cardKey}" />
     <input id="${cardKey}-hide" class="hide" type="radio" name="${cardKey}" />
@@ -7,15 +7,19 @@ const renderCard = (title, color, data, cardKey) => {
     : '';
   return cardKey
     ? `<div class='card'>
-      <div class='card-title' style='border-color:${color}'>
-        ${title}
+      <div class='card-title' ${
+        !icon ? `style='border-color:${color}'` : `style='border:none'`
+      }>
+        ${icon || ''}&ensp;${title}
       </div>
       ${showOhide}
       <div class='card-content'>${data}</div>
     </div>`
     : `<div class='card'>
-    <div class='card-title' style='border-color:${color}'>
-      ${title}
+    <div class='card-title' ${
+      !icon ? `style='border-color:${color}'` : `style='border:none'`
+    }>
+    ${icon || ''}&ensp;${title}
     </div>
     ${data}
   </div>`;
