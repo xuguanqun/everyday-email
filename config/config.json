@@ -1,0 +1,35 @@
+{
+  "mailOption": {
+    "service": "qq",
+    "port": 465,
+    "secure": true,
+    "auth": {
+      "user": "123456@qq.com",
+      "pass": "123456"
+    }
+  },
+  "sendEmail": {
+    "address": "654321@qq.com",
+    "subject": ""
+  },
+  "errorEmail": {
+    "address": "1122334455@qq.com"
+  },
+  "address": "china/zhejiang/hangzhou",
+  "commemoration": [
+    {
+      "name": "你的生日",
+      "date": "10-01",
+      "advance": 15
+    }
+  ],
+  "dataCard": [
+    "天气",
+    "纪念日",
+    "ONE",
+    "知乎日报",
+    "微博热搜",
+    "豆瓣电影",
+    "豆瓣读书"
+  ]
+}
