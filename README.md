@@ -7,9 +7,9 @@
 ## 示例
 
 <div>
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/1.png?raw=true" width="187px" height="406px" />&emsp;
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/2.png?raw=true" width="187px" height="406px" />&emsp;
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/3.png?raw=true" width="187px" height="406px" />&emsp;
+ <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/p1.png?raw=true" width="187px" height="406px" />&emsp;
+ <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/p2.png?raw=true" width="187px" height="406px" />&emsp;
+ <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/p3.png?raw=true" width="187px" height="406px" />&emsp;
 </div>
  
 ## 开始
@@ -28,21 +28,24 @@ pm2 index.js
 {
   "mailOption": {
     "auth": {
-      "user": "1234567@qq.com", // 你的邮箱
-      "pass": "abcdefg" // qq邮箱授权码
+      "user": "1234567@qq.com",
+      "pass": "abcdefg"
     }
   },
   "sendEmail": {
-    "address": "7654321@qq.com", // 要发送的目的邮箱
-    "subject": "" // 邮件标题
+    "address": "7654321@qq.com",
+    "subject": "" 
   },
   "errorEmail": {
-    "address": "1122334455@qq.com" // 当程序发送错误时，发送错误信息邮件地址
+    "address": "1122334455@qq.com"
   },
 }
 ```
-**subject** 邮件的标题，可使用emoji标签，比如：❤️  ，默认为ONE的每日一句。
-**pass** 填写的是qq邮箱的授权码，不是qq密码。（登陆网页qq邮箱，进入设置-账户-生成授权码，跟着步骤，发送短信获取）
+**user** 填写的是你的qq邮箱  
+**pass** 填写的是qq邮箱的授权码，不是qq密码。（登陆网页qq邮箱，进入设置-账户-生成授权码，跟着步骤，发送短信获取）  
+**subject** 邮件的标题，默认为ONE的每日一句  
+**sendEmail.address** 发送目的地邮箱  
+**errorEmail.address** 程序错误时，接收错误信息邮箱
 
 默认只支持配置 qq 邮箱，如需配置其他邮箱，参考 [nodemailer](https://github.com/nodemailer/nodemailer 'nodemailer') 文档，自行配置
 
