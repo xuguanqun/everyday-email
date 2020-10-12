@@ -1,6 +1,9 @@
 # everyday-email
+
 ## 主要功能
-通过爬取：天气、微博、知乎、ONE、豆瓣电影，将数据整合成邮件，定时发送。
+
+通过爬取：天气、微博、知乎、ONE、豆瓣电影、豆瓣读书，将数据整合成邮件，定时发送。
+
 ## 示例
 
 <div>
@@ -12,60 +15,79 @@
 ## 开始
 ```node
 npm install
+node index.js
 ```
-## 运行
-```node
-node email_to_girlfriend.js
-```
-代码默认为服务器部署时定时执行，如要在本地立即测试，请注释 `schedule` 定时函数（注释第39行和第41行）
 ## 使用pm2
 ```
-pm2 email_to_girlfriend.js
+pm2 index.js
 ```
-## 详细使用方式
-### 1.配置邮件
-``` js
-const Email = {
-    subject:'',// 邮件主题
-    from:'',// 你的邮箱
-    pass:'', // qq smtp授权码
-    to:'',// 接收人邮箱
-    error:''//代码出现错误的时候，将错误信息发送至该邮箱
+## 配置
+> 所有配置项均在 `config.json` 文件进行配置
+### 1.配置邮箱信息
+``` json
+{
+  "mailOption": {
+    "auth": {
+      "user": "1234567@qq.com", // 你的邮箱
+      "pass": "abcdefg" // qq邮箱授权码
+    }
+  },
+  "sendEmail": {
+    "address": "7654321@qq.com", // 要发送的目的邮箱
+    "subject": "" // 邮件标题
+  },
+  "errorEmail": {
+    "address": "1122334455@qq.com" // 当程序发送错误时，发送错误信息邮件地址
+  },
 }
 ```
-**subject** 邮件的标题，可使用emoji标签，比如：❤️  
-**pass** 填写的是qq邮箱的授权码，不是qq密码。（登陆网页qq邮箱，进入设置-账户-生成授权码，跟着步骤，发送短信获取） 
+**subject** 邮件的标题，可使用emoji标签，比如：❤️  ，默认为ONE的每日一句。
+**pass** 填写的是qq邮箱的授权码，不是qq密码。（登陆网页qq邮箱，进入设置-账户-生成授权码，跟着步骤，发送短信获取）
 
-默认只支持配置qq邮箱，如需配置其他邮箱，参考[nodemailer](https://github.com/nodemailer/nodemailer "nodemailer")文档，自行修改 `sendEmail` 函数（416行）
-### 2.日期计数（可选）
-```js
-passDay:[
-        {name:'❤️',date:'xxxx-mm-dd',color:'#ff4d4f'},
-    ]
+默认只支持配置 qq 邮箱，如需配置其他邮箱，参考 [nodemailer](https://github.com/nodemailer/nodemailer 'nodemailer') 文档，自行配置
+
+### 2.修改地址（获取天气时使用）
+
+```json
+{
+  "address": "china/zhejiang/wenzhou"
+}
 ```
-可填入多个日期计数  
-+ name: 计数项的名称  
-+ date: 需要按照格式填写，如：2020-2-27  
-+ color: 计数项颜色（也就是恋爱两个字的颜色）  
+
+默认为杭州  
+你可访问 https://tianqi.moji.com/weather/china/zhejiang/wenzhou 查看效果  
+进入 https://tianqi.moji.com/weather 选择你所在的城市，取`url`中`weather`之后的字符串即可
+
 ### 3.纪念日或是事项提醒（可选）
-```js
-remenber:[
-        {name:'你的生日🎂',date:'mm-dd',before:3,desc:'又要长大一岁了呢！',color:'#ffa940'},
-    ]
+
+```json
+{
+  "commemoration": [
+    {
+      "name": "你的生日",
+      "date": "10-26",
+      "advance": 15
+    }
+  ]
+}
 ```
-+ name: 计数项的名称  
-+ date: 可填写两种格式：2020-2-27 或 2-27，如果是带年份的，只有在那一天提醒一次，如果不带年份，每一年都会在这个日期提醒。（前提是你服务器买了好几年的情况下，哈哈哈） 
-+ desc: 事件描述  
-+ color: 事项颜色（也就是 你的生日 四个字的颜色） 
+
+`date` 无需填写年份，`advance` 为提前多少天提醒
+
 ### 4.修改执行时间
-默认是在每天的 8点15分 执行  
-```js
-// 修改  '00 15 08 * * *'
-var interval = schedule.scheduleJob('00 15 08 * * *',()=>{
-    start();
-})
+
+默认是在每天的 8 点 00 分 执行
+
+```json
+{
+  "interval": "00 20 08 * * *"
+}
 ```
+
+例：修改为 8 点 20 分
+
 格式说明
+
 ```java
 00   15   08   *    *    *
 *    *    *    *    *    *
@@ -78,12 +100,27 @@ var interval = schedule.scheduleJob('00 15 08 * * *',()=>{
 │    └──────────────────── minute (0 - 59)
 └───────────────────────── second (0 - 59, OPTIONAL)
 ```
-具体请根据 [node-schedule](https://github.com/node-schedule/node-schedule "node-schedule") 文档自行修改
+
+具体请根据 [node-schedule](https://github.com/node-schedule/node-schedule 'node-schedule') 文档自行修改
+
+### 5.配置卡片
+
+```json
+{
+  "dataCard": ["微博热搜", "天气", ...]
+}
+```
+
+数据将会根据 `dataCard` 配置有序进行渲染，可自行配置内容以及顺序
+
 ## 关于
+
 项目代码非常简单，供学习娱乐使用。
+
 ### 项目所使用到的包
-* [request](https://github.com/request/request "request")
-* [cheerio](https://github.com/cheeriojs/cheerio "cheerio")
-* [iconv-lite](https://github.com/ashtuchkin/iconv-lite "iconv-lite")
-* [node-schedule](https://github.com/node-schedule/node-schedule "node-schedule")
-* [nodemailer](https://github.com/nodemailer/nodemailer "nodemailer")
+
+- [request](https://github.com/request/request 'request')
+- [cheerio](https://github.com/cheeriojs/cheerio 'cheerio')
+- [iconv-lite](https://github.com/ashtuchkin/iconv-lite 'iconv-lite')
+- [node-schedule](https://github.com/node-schedule/node-schedule 'node-schedule')
+- [nodemailer](https://github.com/nodemailer/nodemailer 'nodemailer')

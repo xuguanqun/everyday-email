@@ -24,7 +24,7 @@ const API = {
   微博热搜: { func: weiboTop, format: card_weibo },
   豆瓣电影: { func: doubanMovie, format: card_doubanMovie },
   豆瓣读书: { func: doubanBook, format: card_doubanBook },
-  one: { func: one, format: card_one }
+  ONE: { func: one, format: card_one }
 };
 
 module.exports = API;

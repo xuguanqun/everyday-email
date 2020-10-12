@@ -1,10 +1,17 @@
-const { dataCard } = require('./config/config.json');
+const { dataCard, interval } = require('./config/config.json');
 const sendDataEmail = require('./utils/sendDataEmail');
 const sendErrorEmail = require('./utils/sendErrorEmail');
 const renderHtml = require('./utils/renderHtml');
 const API = require('./utils/api');
 const FS = require('fs');
-(async function () {
+const schedule = require('node-schedule');
+(function start() {
+  // default 8:00 everyday
+  // const timer = schedule.scheduleJob(interval || '00 00 08 * * *', () => {
+  mission();
+  // });
+})();
+function mission() {
   const missionList = dataCard.map((key) => API[key].func());
   const mission = Promise.allSettled(missionList)
     .then((data) => {
@@ -20,17 +27,25 @@ const FS = require('fs');
       console.log(successData, errorData);
       const fdata = formatData(successData);
       const html = renderHtml(fdata);
-      FS.writeFile('./yanshi.html', html, function (err) {
-        console.log(err);
-      });
-      // sendDataEmail(html).then((e) => console.log(e));
-      // .catch((err) => console.error(err));
-      // sendErrorEmail(errorData);
+      const oneData = successData.filter((fil) => fil.title === 'ONE');
+      const one = oneData.length > 0 ? oneData[0].data.title : null;
+      // FS.writeFile('./yanshi.html', html, function (err) {
+      //   console.log(err);
+      // });
+      sendDataEmail(html, one)
+        .then((e) => console.log('邮件发送成功', e))
+        .catch((err) => {
+          console.error(err);
+          setTimeout(() => {
+            start();
+          }, 2000);
+        });
+      sendErrorEmail(errorData);
     })
     .catch((err) => {
-      debugger;
+      console.error(err);
     });
-})();
+}
 
 function formatData(data) {
   const obj = {};
