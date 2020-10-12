@@ -3,13 +3,12 @@ const sendDataEmail = require('./utils/sendDataEmail');
 const sendErrorEmail = require('./utils/sendErrorEmail');
 const renderHtml = require('./utils/renderHtml');
 const API = require('./utils/api');
-const FS = require('fs');
 const schedule = require('node-schedule');
 (function start() {
   // default 8:00 everyday
-  // const timer = schedule.scheduleJob(interval || '00 00 08 * * *', () => {
-  mission();
-  // });
+  const timer = schedule.scheduleJob(interval || '00 00 08 * * *', () => {
+    mission();
+  });
 })();
 function mission() {
   const missionList = dataCard.map((key) => API[key].func());
@@ -29,9 +28,6 @@ function mission() {
       const html = renderHtml(fdata);
       const oneData = successData.filter((fil) => fil.title === 'ONE');
       const one = oneData.length > 0 ? oneData[0].data.title : null;
-      // FS.writeFile('./yanshi.html', html, function (err) {
-      //   console.log(err);
-      // });
       sendDataEmail(html, one)
         .then((e) => console.log('邮件发送成功', e))
         .catch((err) => {
