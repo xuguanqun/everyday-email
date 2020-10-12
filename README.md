@@ -19,7 +19,7 @@ node index.js
 ```
 ## 使用pm2
 ```
-pm2 index.js
+pm2 start index.js --name everyday-email
 ```
 ## 配置
 > 所有配置项均在 `config.json` 文件进行配置
