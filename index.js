@@ -23,7 +23,7 @@ function mission() {
           errorData[i] = { title: dataCard[i], reason: e.reason };
         }
       });
-      console.log(successData, errorData);
+      // console.log(successData, errorData);
       const fdata = formatData(successData);
       const html = renderHtml(fdata);
       const oneData = successData.filter((fil) => fil.title === 'ONE');
@@ -36,7 +36,7 @@ function mission() {
             start();
           }, 2000);
         });
-      sendErrorEmail(errorData);
+      errorData.length > 0 && sendErrorEmail(errorData);
     })
     .catch((err) => {
       console.error(err);
